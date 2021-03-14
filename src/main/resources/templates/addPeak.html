@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add employee</title>
+</head>
+<body>
+<a th:href="@{/}">Back to Peaks List</a>
+
+<form th:action="@{'/add'}" th:object="${peakToAdd}" th:method="POST">
+    <fieldset style="color:blue">
+        <legend style="color:blue"><h2>Add Peak</h2></legend>
+
+        <label for="name">Name:</label><br/>
+        <input id="name" type="text" name="name" th:field="*{name}"><br>
+        <span style="color: #ff0000" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" /><br>
+
+        <label for="height">Height:</label><br/>
+        <input id="height" type="text" name="color" th:field="*{height}"><br>
+        <span style="color: #ff0000" th:if="${#fields.hasErrors('height')}" th:errors="*{height}" /><br>
+
+        <label for="mountain_range">Mountain Range:</label>
+        <input id="mountain_range" type="text" name="mountain_range" th:field="*{mountain_range}"><br>
+        <span style="color: #ff0000" th:if="${#fields.hasErrors('mountain_range')}" th:errors="*{mountain_range}" /><br>
+
+        <label for="county">County:</label>
+        <input id="county" type="text" name="county" th:field="*{county}"><br>
+        <span style="color: #ff0000" th:if="${#fields.hasErrors('county')}" th:errors="*{county}" /><br>
+
+
+
+        <input type="submit" value="Insert New Peak" style="color:blue;">
+    </fieldset>
+</form>
+
+</body>
+</html>

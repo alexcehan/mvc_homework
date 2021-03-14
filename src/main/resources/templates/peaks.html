@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Munti Romania</title>
+
+</head>
+<body>
+
+<header>
+    <h2 style="alignment: right">Cele mai inalte varfuri din Romania:</h2>
+</header>
+
+<table border="10" , style="color: midnightblue; width: 100%">
+    <tr id="tableHeaderId">
+
+        <th>Nume</th>
+        <th>Inaltime</th>
+        <th>Masiv</th>
+        <th>Judet</th>
+    </tr>
+    <tr th:each="peak:${peakList}">
+
+        <td th:text="${peak.name}"></td>
+        <td th:text="${peak.height}"></td>
+        <td th:text="${peak.mountain_range}"></td>
+        <td th:text="${peak.county}"></td>
+        <td><a th:href="@{/{peakId}/edit(peakId=${peak.id})}">EDIT</a></td>
+        <td><form th:action="@{/{peakId}/delete(peakId=${peak.id})}"
+                  method="POST">
+            <input type="submit"  th:value="DELETE"/>
+        </form></td>
+
+
+        </td>
+
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
+<p><a href="/add"><input type="submit" value="Insert New Peak" style="color:darkred;"></a></p>
+
+
+</body>
+</html>
